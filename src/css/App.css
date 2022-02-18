@@ -1,0 +1,14 @@
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: beige;
+}
+
+.main {
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

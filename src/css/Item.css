@@ -1,0 +1,24 @@
+.person {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 2px solid rgb(58, 37, 20);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: white;
+
+    cursor: pointer;
+}
+.person:last-child {
+    margin-bottom: unset;
+}
+.person:first-child {
+    margin-top: 15px;
+}
+
+.person-img {
+    border-radius: 50%;
+}
