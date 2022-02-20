@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import List from './List';
 
 function Home() {
-    const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [contacts, setContacts] = useState([]);
   
@@ -17,7 +16,7 @@ function Home() {
           },
           (error) => {
             setIsLoaded(true);
-            setError(error);
+            alert(error);
           }
         )
     }, []);

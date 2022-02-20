@@ -16,7 +16,7 @@ const List = ({contacts}) => {
         <div className='contact-list-container'>
             <ul data-testid="contact-list">
                 {contacts.length > 0 && contactListItems}
-                {contacts.length == 0 && 
+                {contacts.length === 0 &&
                     <li className='contact'>
                         No Contacts Added
                     </li>
