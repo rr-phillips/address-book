@@ -1,0 +1,20 @@
+@import './variables.scss';
+
+.contact-list-container {
+    width: 100%;
+
+    ul {
+        padding: unset;
+        list-style: none;
+        color: $light-one;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+        border: 2px solid $light-one;
+        background-color: $dark-one;
+        border-radius: $border-radius;
+    }
+}

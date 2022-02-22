@@ -1,38 +1,39 @@
 import React from 'react';
+import { format } from 'date-fns';
 
-const Details = ({person}) => {
+import '../css/Details.scss';
+
+const Details = ({person, onChange, onSubmit}) => {
+    let dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
+    let fullName = person.name.first + ' ' + person.name.last;
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        if(name == 'fullName') {
+            
+        }
+        const value = event.target.value;
+        onChange(name, value);
+    }
     return (
-        <div className='details-container'>
+        <form className='details-container' onSubmit={onSubmit}>
             <div className='details-img-container'>
                 <img className='details profile-img' alt="" src={person.picture.large} />
             </div>
             <div className='details-container'>
-                <h2 className='details first-name'>
-                    {person.name.first}
-                </h2>
-                <h2 className='details last-name'>
-                    {person.name.last}
-                </h2>
+                <input onChange={handleChange} type="text" className='details' name="full_name" value={fullName} />
             </div>
             <div className='details-container'>
-                <p className='details phone'>
-                    {person.phone}
-                </p>
+                <input onChange={handleChange} type="tel" className='details' name="person.phone" value={person.phone} />
             </div>
             <div className='details-container'>
-                <p className='details email'>
-                    {person.email}
-                </p>
+                <input onChange={handleChange} type="text" className='details' name="person.email" value={person.email} />
             </div>
             <div className='details-container'>
-                <p className='details dob'>
-                    {person.dob.date}
-                </p>
-                <p className='details age'>
-                    {person.dob.age}
-                </p>
+                <input onChange={handleChange} type="text" className='details' name="person.dob" value={dobDate} disabled />
             </div>
-        </div>
+            <input type="submit" value="Update" className="submit-btn" />
+        </form>
     )
 }
 

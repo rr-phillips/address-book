@@ -1,0 +1,37 @@
+@import './variables.scss';
+
+.details-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    .profile-img {
+        border-radius: 50%;
+        border: 2px solid $light-one;
+        margin-bottom: 20px;
+    }
+
+    input {
+        background-color: $medium;
+        color: $light-one;
+    
+        border: none;
+        border-radius: $border-radius;
+        line-height: 20px;
+        font-size: 22px;
+    
+        margin-bottom: 10px;
+
+        &:focus, &:focus-visible {
+            border: 2px solid $light-one;
+            outline: none;
+        }
+    }
+
+    .submit-btn {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+}
+

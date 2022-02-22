@@ -22,9 +22,11 @@ function Home() {
     }, []);
 
     return (
+      <>
         <div className='main'>
             <List contacts={contacts} />
         </div>
+      </>
     )
 }
 

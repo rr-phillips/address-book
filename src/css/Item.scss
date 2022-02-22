@@ -1,0 +1,60 @@
+@import './variables.scss';
+
+.person-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .person {
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        border: 2px solid $light-one;
+        border-radius: $border-radius;
+        margin-bottom: 5px;
+        padding: 5px;
+        background-color: $medium;
+    
+        cursor: pointer;
+
+        &:last-child {
+            margin-bottom: unset;
+        }
+        &:first-child {
+            margin-top: 15px;
+        }
+        
+        .person-img {
+            border-radius: 50%;
+        }
+    }
+}
+
+.base-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	overflow: auto;
+	outline: none;
+	padding: 20px;
+
+    width: 350px;
+    background-color: $dark-two;
+    border-radius: $border-radius;
+    border: 2px solid $light-one;
+}
+
+.base-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1002;
+}

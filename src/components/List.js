@@ -2,12 +2,11 @@ import React from 'react';
 
 import Item from './Item';
 
-import '../css/List.css';
+import '../css/List.scss';
 
 const List = ({contacts}) => {
     let contactListItems = [];
     contacts.forEach((item,index)=>{
-        console.log(index, item);
         contactListItems.push(
             <Item key={index} person={item} index={index} />
         )
