@@ -30,7 +30,7 @@ const Details = () => {
     return (
         <>
         <div className="details-main">
-            <img className='back-btn' onClick={goBack} src={BackBtn} />
+            <img className='back-btn' onClick={goBack} src={BackBtn} alt="cream colored left facing arrow" />
             <div className='details'>
                 <form className='details-container' data-class="details-container" >
                     <div className='details-img-container' data-class="details-img-container">
