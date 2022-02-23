@@ -1,40 +1,26 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-
-import Details from './Details';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import '../css/Item.scss';
 
 function Item({person, index}) {
-    const [isFormOpen, setIsFormOpen] = useState(false);
+    const navigate = useNavigate();
 
-    function toggleFormModal() { 
-        setIsFormOpen(!isFormOpen);
-    }
-    const onFormSubmit = (e) => {
-        e.preventDefault();
-        toggleFormModal();
-    }
-    const onFormChange = (inputId, inputValue) => {
-        person[inputId] = inputValue;
+    const goToDetails = () => {
+        navigate(`/details/${index}`, {
+            state:{
+                person: person,
+                phone: person.phone
+            }
+        });
     }
 
     return (
         <div className='person-container' data-class='person-container'>
-            <li className='person' data-class='person' onClick={toggleFormModal}>
+            <li className='person' data-class='person' onClick={goToDetails}>
                 <img className='person-img' data-class="person-img" alt="" src={person.picture.thumbnail} />
                 <h2 className='person-name' data-class="person-name">{person.full_name}</h2>
             </li>
-            <Modal
-                isOpen={isFormOpen}
-                onRequestClose={toggleFormModal}
-                contentLabel="Contact Details"
-                className="base-modal"
-                overlayClassName="base-overlay"
-                ariaHideApp={false}
-            >
-                <Details onChange={onFormChange} onSubmit={onFormSubmit} person={person} />
-            </Modal>
         </div>
     )
 }

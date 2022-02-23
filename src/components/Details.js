@@ -1,19 +1,21 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { useLocation } from 'react-router-dom';
 
 import '../css/Details.scss';
 
-const Details = ({person, onChange, onSubmit}) => {
+const Details = () => {
+    const person = useLocation().state.person;
     let dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         person[name] = value;
-        onChange(name, value);
+        // onChange(name, value);
     }
     return (
-        <form className='details-container' data-class="details-container" onSubmit={onSubmit}>
+        <form className='details-container' data-class="details-container" >
             <div className='details-img-container' data-class="details-img-container">
                 <img className='details profile-img' data-class="profile-img" alt="" src={person.picture.large} />
             </div>
