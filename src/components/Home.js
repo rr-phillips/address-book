@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Modal from 'react-modal';
 
 import List from './List';
+import Loading from './Loading';
+
+import '../css/Home.scss';
 
 
 export default function Home() {
@@ -23,6 +27,7 @@ export default function Home() {
           }
         )
     } else {
+      setIsLoaded(true);
       setContacts(JSON.parse(localStorage.getItem('contacts')));
     }
   }
@@ -31,7 +36,12 @@ export default function Home() {
   return (
     <>
       <div className='main'>
-          <List contacts={contacts} />
+          {isLoaded && <List contacts={contacts} />}
+          {!isLoaded && 
+            <div className='loading-main'>
+              <Loading />
+            </div>
+          }
       </div>
     </>
   )
