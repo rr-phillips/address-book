@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import '../css/Item.scss';
 
-function Item({person, index}) {
+function Item({person}) {
     const navigate = useNavigate();
 
     const goToDetails = () => {
