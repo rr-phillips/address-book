@@ -7,7 +7,7 @@ function Home() {
     const [contacts, setContacts] = useState([]);
   
     useEffect(() => {
-      fetch("https://randomuser.me/api/?results=50&inc=name,phone,email,dob,phone,picture")
+      fetch("https://randomuser.me/api/?results=25&inc=name,phone,email,dob,phone,picture")
         .then(res => res.json())
         .then(
           (result) => {

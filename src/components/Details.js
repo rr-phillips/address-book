@@ -5,34 +5,30 @@ import '../css/Details.scss';
 
 const Details = ({person, onChange, onSubmit}) => {
     let dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
-    let fullName = person.name.first + ' ' + person.name.last;
 
     const handleChange = (event) => {
         const name = event.target.name;
-        if(name == 'fullName') {
-            
-        }
         const value = event.target.value;
+        person[name] = value;
         onChange(name, value);
     }
     return (
-        <form className='details-container' onSubmit={onSubmit}>
-            <div className='details-img-container'>
-                <img className='details profile-img' alt="" src={person.picture.large} />
+        <form className='details-container' data-class="details-container" onSubmit={onSubmit}>
+            <div className='details-img-container' data-class="details-img-container">
+                <img className='details profile-img' data-class="profile-img" alt="" src={person.picture.large} />
             </div>
             <div className='details-container'>
-                <input onChange={handleChange} type="text" className='details' name="full_name" value={fullName} />
+                <input onChange={handleChange} type="text" className='details' data-class="details-full_name" name="full_name" value={person.full_name} disabled />
             </div>
             <div className='details-container'>
-                <input onChange={handleChange} type="tel" className='details' name="person.phone" value={person.phone} />
+                <input onChange={handleChange} type="tel" className='details' data-class="details-phone" name="phone" value={person.phone} disabled />
             </div>
             <div className='details-container'>
-                <input onChange={handleChange} type="text" className='details' name="person.email" value={person.email} />
+                <input onChange={handleChange} type="text" className='details' data-class="details-email" name="email" value={person.email} disabled />
             </div>
             <div className='details-container'>
-                <input onChange={handleChange} type="text" className='details' name="person.dob" value={dobDate} disabled />
+                <input onChange={handleChange} type="text" className='details' data-class="details-dob" name="dob" value={dobDate} disabled />
             </div>
-            <input type="submit" value="Update" className="submit-btn" />
         </form>
     )
 }

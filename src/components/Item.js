@@ -7,26 +7,23 @@ import '../css/Item.scss';
 
 function Item({person, index}) {
     const [isFormOpen, setIsFormOpen] = useState(false);
-    const [inputs, setInputs] = useState({});
 
     function toggleFormModal() { 
         setIsFormOpen(!isFormOpen);
     }
     const onFormSubmit = (e) => {
         e.preventDefault();
-        console.log('save inputs', inputs);
         toggleFormModal();
     }
     const onFormChange = (inputId, inputValue) => {
-        console.log('on form change', inputId, inputValue);
-        setInputs(values => ({...values, [inputId]: inputValue}))
+        person[inputId] = inputValue;
     }
 
     return (
-        <div className='person-container'>
+        <div className='person-container' data-class='person-container'>
             <li className='person' data-class='person' onClick={toggleFormModal}>
                 <img className='person-img' data-class="person-img" alt="" src={person.picture.thumbnail} />
-                <h2 className='person-name' data-class="person-name">{person.name.first} {person.name.last}</h2>
+                <h2 className='person-name' data-class="person-name">{person.full_name}</h2>
             </li>
             <Modal
                 isOpen={isFormOpen}
