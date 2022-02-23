@@ -7,7 +7,7 @@ function Item({person, index}) {
     const navigate = useNavigate();
 
     const goToDetails = () => {
-        navigate(`/details/${index}`, {
+        navigate(`/details`, {
             state:{
                 person: person,
                 phone: person.phone

@@ -2,18 +2,26 @@ import React from 'react';
 import { format } from 'date-fns';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import BackBtn from '../assets/back-arrow.png';
+
 import '../css/Details.scss';
 
 const Details = () => {
+    let person;
     const navigate = useNavigate();
-    const person = useLocation().state.person;
+    const location = useLocation();
+    if(location.state == null) {
+        person = JSON.parse(localStorage.getItem('detail'));
+    } else {
+        person = location.state.person;
+        localStorage.setItem('detail', JSON.stringify(person));
+    }
     let dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         person[name] = value;
-        // onChange(name, value);
     }
 
     const goBack = () => {
@@ -22,7 +30,7 @@ const Details = () => {
     return (
         <>
         <div className="details-main">
-            <p className='back-btn' onClick={goBack}>Back to List</p>
+            <img className='back-btn' onClick={goBack} src={BackBtn} />
             <div className='details'>
                 <form className='details-container' data-class="details-container" >
                     <div className='details-img-container' data-class="details-img-container">
