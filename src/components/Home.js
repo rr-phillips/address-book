@@ -10,17 +10,26 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [contacts, setContacts] = useState([]);
 
-  const compareStrings = (a, b) => {
-    return a > b ? 1 : a < b ? -1 : 0
-  }
+  // const compareStrings = (a, b) => {
+  //   return a > b ? 1 : a < b ? -1 : 0
+  // }
 
-  const compare = (a, b) => {
-    return a.name.last === b.name.last ?
-      compareStrings(a.name.first, b.name.first) :
-      compareStrings(a.name.last, b.name.last);
-  }
+  // const compare = (a, b) => {
+  //   return a.name.last === b.name.last ?
+  //     compareStrings(a.name.first, b.name.first) :
+  //     compareStrings(a.name.last, b.name.last);
+  // }
 
   useEffect(() => {
+    const compareStrings = (a, b) => {
+      return a > b ? 1 : a < b ? -1 : 0
+    }
+  
+    const compare = (a, b) => {
+      return a.name.last === b.name.last ?
+        compareStrings(a.name.first, b.name.first) :
+        compareStrings(a.name.last, b.name.last);
+    }
     if(!localStorage.getItem('contacts')) {
       fetch("https://randomuser.me/api/?results=50&nat=us&inc=name,phone,email,dob,phone,picture")
         .then(res => res.json())
