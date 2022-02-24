@@ -2,7 +2,7 @@
 Front end client for an address book application built in react
 
 # Link
-https://address-book-r8zq1hm99-rr-phillips.vercel.app/
+https://address-book-omega.vercel.app/
 
 # Deploment/Running instructions
 1. download the project
