@@ -13,11 +13,11 @@ const Details = () => {
     let dobDate;
     if(location.state == null && localStorage.getItem('detail')) {
         person = JSON.parse(localStorage.getItem('detail'));
-        dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
+        dobDate = format(new Date(person.dob.date), "MM-dd-yyyy");
     } else if (location.state !== null) {
         person = location.state.person;
         localStorage.setItem('detail', JSON.stringify(person));
-        dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
+        dobDate = format(new Date(person.dob.date), "MM-dd-yyyy");
     }
     let show = true ? person : false;
     const handleChange = (event) => {
