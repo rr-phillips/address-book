@@ -11,29 +11,42 @@ const Details = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let dobDate;
+    // if the details have been previously stored and there is no state
+    // ie. if a user goes to the /details url without navigating through the
+    // contacts list page
     if(location.state == null && localStorage.getItem('detail')) {
         person = JSON.parse(localStorage.getItem('detail'));
         dobDate = format(new Date(person.dob.date), "MM-dd-yyyy");
     } else if (location.state !== null) {
+        // if the user navigates to the /details through
+        // the contacts list and saves the details to the local storage
         person = location.state.person;
         localStorage.setItem('detail', JSON.stringify(person));
         dobDate = format(new Date(person.dob.date), "MM-dd-yyyy");
     }
+    // if there is a person loaded or not
     let show = true ? person : false;
+
+    // a handle change function to handle input change if the form is ever
+    // reactivated and used to make the contacts editable
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         person[name] = value;
     }
 
+    // goes back using the history syntax
     const goBack = () => {
         navigate(-1);
     }
+    // goes home to the contacts list page if user navigates to the /details page
+    // without going to the contacts list first
     const goHome = () => {
         navigate('/');
     }
     return (
         <>
+        {/* shows the details page if the person is loaded */}
         {show &&
         <div className="details-main">
             <img className='back-btn' onClick={goBack} src={BackBtn} alt="cream colored left facing arrow" />
@@ -57,6 +70,7 @@ const Details = () => {
                 </form>
             </div>
         </div>}
+        {/* shows the notice if person isn't loaded */}
         {!show &&
         <div className='details-main' data-class="details-main">
             <img className='back-btn' data-class="back-btn" onClick={goHome} src={BackBtn} alt="cream colored left facing arrow" />

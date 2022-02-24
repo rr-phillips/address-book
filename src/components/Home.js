@@ -7,9 +7,13 @@ import '../css/Home.scss';
 
 
 export default function Home() {
+  // creates a flag for once the data is loaded and sorted
   const [isLoaded, setIsLoaded] = useState(false);
+  // creates the contacts state array
   const [contacts, setContacts] = useState([]);
 
+  // calls useEffect to get the list of contacts and sort them first by last name,
+  // then by first name in the case of last name matches
   useEffect(() => {
     const compareStrings = (a, b) => {
       return a > b ? 1 : a < b ? -1 : 0
@@ -27,6 +31,8 @@ export default function Home() {
           (result) => {
             result.results.sort(compare);
             setContacts(result.results);
+            // I also store these into the local storage to facilitate the potential future case
+            // of editing contact details
             localStorage.setItem('contacts', JSON.stringify(result.results));
             setIsLoaded(true);
           },
@@ -45,6 +51,9 @@ export default function Home() {
   return (
     <>
       <div className='main'>
+          {/* shows the loader while the contacts are being retrieved and sorted
+            then displays the list of contacts once loaded
+          */}
           {isLoaded && <List contacts={contacts} />}
           {!isLoaded && 
             <div className='loading-main'>

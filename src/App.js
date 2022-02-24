@@ -13,6 +13,7 @@ import './css/App.scss';
 const App = () => {
 
   return (
+    // creates the routes for the details and the home page
     <Router>
       <Routes>
         <Route path="details" element={<Details />} />
