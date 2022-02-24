@@ -10,15 +10,26 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [contacts, setContacts] = useState([]);
 
+  const compareStrings = (a, b) => {
+    return a > b ? 1 : a < b ? -1 : 0
+  }
+
+  const compare = (a, b) => {
+    return a.name.last === b.name.last ?
+      compareStrings(a.name.first, b.name.first) :
+      compareStrings(a.name.last, b.name.last);
+  }
+
   useEffect(() => {
     if(!localStorage.getItem('contacts')) {
-      fetch("https://randomuser.me/api/?results=50&inc=name,phone,email,dob,phone,picture")
+      fetch("https://randomuser.me/api/?results=50&nat=us&inc=name,phone,email,dob,phone,picture")
         .then(res => res.json())
         .then(
           (result) => {
-            setIsLoaded(true);
+            result.results.sort(compare);
             setContacts(result.results);
             localStorage.setItem('contacts', JSON.stringify(result.results));
+            setIsLoaded(true);
           },
           (error) => {
             setIsLoaded(true);
