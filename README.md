@@ -18,7 +18,7 @@ My overall approach for this project was to break down each component to only ha
 
 I made sure to store the contacts, and detailed contact in the local storage to persist across reloads, as well as allow users to "go back" from the details to the orginial contact list, without a whole new set of contacts being reloaded (which would remove the context from the details). I also ended up storing the contact info that was last in the details page to make sure that if someone went to the "/details" page from the url, it will load the last one, instead of just a blank page. There is also a check to see if there is details stored (ie. if someone inputs the "/details" into the url without having to go through the contacts first), it will display a message and show a back btn that will take the user back to the contact page.
 
-I generally tried to make the user experience fairly rounded out and decently well handled.
+I generally tried to make the user experience fairly rounded out and decently well handled. I also emulated the Iphone contacts page instead of going for a more old school "last name, first name", since an Iphone kind of contact set up is more what I immediately think of when I think of an "address book". 
 
 ## Implemented Features
 - api call to "randomuser.me" to get user info, namely: name, phone number, email, date of birth, and images
