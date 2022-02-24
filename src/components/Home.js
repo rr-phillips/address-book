@@ -21,7 +21,7 @@ export default function Home() {
         compareStrings(a.name.last, b.name.last);
     }
     if(!localStorage.getItem('contacts')) {
-      fetch("https://randomuser.me/api/?results=50&nat=us&inc=name,phone,email,dob,phone,picture")
+      fetch("https://randomuser.me/api/?results=50&nat=us&inc=name,phone,email,dob,phone,picture&seed=nuvalence")
         .then(res => res.json())
         .then(
           (result) => {
