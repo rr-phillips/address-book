@@ -5,6 +5,6 @@ describe('Getting each person', () => {
         cy.get('[data-class="person"');
         cy.get('[data-class="person-img"]');
         cy.get('[data-class="person-name"]')
-            .should('have.length', 25);
+            .should('have.length', 50);
     });
 });

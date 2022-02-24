@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { format } from 'date-fns';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -10,14 +10,16 @@ const Details = () => {
     let person;
     const navigate = useNavigate();
     const location = useLocation();
-    if(location.state == null) {
+    let dobDate;
+    if(location.state == null && localStorage.getItem('detail')) {
         person = JSON.parse(localStorage.getItem('detail'));
-    } else {
+        dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
+    } else if (location.state !== null) {
         person = location.state.person;
         localStorage.setItem('detail', JSON.stringify(person));
+        dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
     }
-    let dobDate = format(new Date(person.dob.date), "dd-MM-yyyy");
-
+    let show = true ? person : false;
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -27,8 +29,12 @@ const Details = () => {
     const goBack = () => {
         navigate(-1);
     }
+    const goHome = () => {
+        navigate('/');
+    }
     return (
         <>
+        {show &&
         <div className="details-main">
             <img className='back-btn' onClick={goBack} src={BackBtn} alt="cream colored left facing arrow" />
             <div className='details'>
@@ -50,7 +56,13 @@ const Details = () => {
                     </div>
                 </form>
             </div>
+        </div>}
+        {!show &&
+        <div className='details-main' data-class="details-main">
+            <img className='back-btn' data-class="back-btn" onClick={goHome} src={BackBtn} alt="cream colored left facing arrow" />
+            <h2>There are no details to show, please go back to the contact list.</h2>
         </div>
+        }
         </>
     )
 }
